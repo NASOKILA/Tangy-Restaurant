@@ -14,6 +14,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using TangyRestaurant.Models;
 using System.Globalization;
+using TangyRestaurant.Utility;
 
 namespace TangyRestaurant
 {
@@ -44,13 +45,13 @@ namespace TangyRestaurant
             services.AddDefaultIdentity<IdentityUser>()
                 .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-
+            
             //OAuth Authentication for FaceBook  01.Go to https://developers.facebook.com ,  02.Create an app,  03.SetUp credential 
             services.AddAuthentication().AddFacebook(facebookOptions =>
             {
                 //We setup the AppId and App Secret
-                facebookOptions.AppId = "2061631950611710";
-                facebookOptions.AppSecret = "9d437695cd68677d65ac95e8f95653cb";
+                facebookOptions.AppId = OAuthKeys.FacebookAppId;
+                facebookOptions.AppSecret = OAuthKeys.FacebookAppSecret;
             });
 
             
@@ -58,8 +59,8 @@ namespace TangyRestaurant
             services.AddAuthentication().AddGoogle(googleOptions =>
             {
                 //With google we have ClientID and ClientSecret
-                googleOptions.ClientId = "581571008989-73a4u754kafke8hrc3jbnga50hl46lrv.apps.googleusercontent.com";
-                googleOptions.ClientSecret = "5_IVt5M10BbVHJxWXKiEKtzJ";
+                googleOptions.ClientId = OAuthKeys.GoogleClientId;
+                googleOptions.ClientSecret = OAuthKeys.GooleClientSecret;
             });
             
 

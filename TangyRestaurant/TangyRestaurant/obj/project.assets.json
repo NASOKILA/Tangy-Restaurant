@@ -12224,11 +12224,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Asus\\Desktop\\Courses\\.NET Core MVC 2.0\\.NET-Core-Udemy\\02.TangyRestaurant\\TangyRestaurant\\TangyRestaurant\\TangyRestaurant.csproj",
+      "projectUniqueName": "C:\\Users\\Asus\\Desktop\\projects\\Tangy Restaurant\\Tangy-Restaurant\\TangyRestaurant\\TangyRestaurant\\TangyRestaurant.csproj",
       "projectName": "TangyRestaurant",
-      "projectPath": "C:\\Users\\Asus\\Desktop\\Courses\\.NET Core MVC 2.0\\.NET-Core-Udemy\\02.TangyRestaurant\\TangyRestaurant\\TangyRestaurant\\TangyRestaurant.csproj",
+      "projectPath": "C:\\Users\\Asus\\Desktop\\projects\\Tangy Restaurant\\Tangy-Restaurant\\TangyRestaurant\\TangyRestaurant\\TangyRestaurant.csproj",
       "packagesPath": "C:\\Users\\Asus\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Asus\\Desktop\\Courses\\.NET Core MVC 2.0\\.NET-Core-Udemy\\02.TangyRestaurant\\TangyRestaurant\\TangyRestaurant\\obj\\",
+      "outputPath": "C:\\Users\\Asus\\Desktop\\projects\\Tangy Restaurant\\Tangy-Restaurant\\TangyRestaurant\\TangyRestaurant\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
