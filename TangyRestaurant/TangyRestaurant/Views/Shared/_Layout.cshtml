@@ -1,0 +1,205 @@
+﻿@using Microsoft.EntityFrameworkCore;
+@using Microsoft.AspNetCore.Http;
+
+@inject TangyRestaurant.Data.ApplicationDbContext _db
+@inject IHttpContextAccessor _httpContextAccessor
+
+@{
+    var cartItems = _httpContextAccessor.HttpContext.Session.GetInt32("CartItems");
+    //null
+    if (cartItems == null)
+    {
+
+        int itemsCount = _db.ShoppingCarts
+            .Include(sc => sc.ApplicationUser)
+            .Where(sc => sc.ApplicationUser.Email == this.User.Identity.Name).Count();
+
+        _httpContextAccessor.HttpContext.Session.SetInt32("CartItems", itemsCount);
+
+        cartItems = itemsCount;
+    }
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tangy Restaurant</title>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+    <link rel="icon" href="~/images/logo-tangy-icon.png" />
+
+    @*we include the jquery datetime picker .js cdn here, because we wil use it only here*@
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.js"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+
+    <environment include="Development">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.css" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="~/css/jquery-ui.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/mycss.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.css" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="~/css/jquery-ui.min.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/mycss.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-timepicker/1.10.0/jquery.timepicker.min.css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    </environment>
+
+</head>
+<body>
+
+    <style>
+
+        /*We set the footer to be at the bottom*/
+        .footer {
+            position: relative;
+            bottom: 0;
+            width: 100%;
+            height: 60px;
+            background-color: #343A40;
+        }
+
+        /*Footer container*/
+        footer > .cont {
+            padding: 15px;
+        }
+
+            footer > .cont > p:hover {
+                color: rgba(255, 255, 255, 0.75) !important;
+                cursor: pointer;
+            }
+
+        .form-border {
+            border: 1px solid #bbb9b9;
+            border-radius: 5px;
+            padding: 30px;
+        }
+
+        .custom-label {
+            display: block;
+            width: 100%;
+            height: 34px;
+            padding: 6px 12px;
+            font-size: 14px;
+            line-height: 1.4285;
+            color: #555;
+        }
+
+        .RenderBody {
+            margin-top:65px;
+        }
+
+    </style>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+
+        <a class="navbar-brand" asp-action="Index" asp-controller="Home">Tangy Restaurant</a>
+
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" asp-controller="Order" asp-action="History">Order History <i class="fas fa-history"></i></a>
+                    </li>
+
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Admin <i class="fas fa-users"></i>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" asp-controller="Category" asp-action="Index">Category</a>
+                                <a class="dropdown-item" asp-controller="SubCategory" asp-action="Index">Sub Category</a>
+                                <a class="dropdown-item" asp-controller="MenuItem" asp-action="Index">Menu Items</a>
+                                <a class="dropdown-item" asp-controller="Coupon" asp-action="Index">Coupons</a>
+                                <a class="dropdown-item" asp-controller="User" asp-action="Index">Users</a>
+                            </div>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Order <i class="fas fa-credit-card"></i>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" asp-controller="Order" asp-action="Manage">Manage Order</a>
+                                <a class="dropdown-item" asp-controller="Order" asp-action="Pickup">Order Pickup</a>
+                                <a class="dropdown-item" asp-controller="Order" asp-action="DownloadOrderDetails">Download Order Details</a>
+                            </div>
+                        </li>
+                    }
+                    <li class="nav-item">
+                        @if (cartItems != null)
+                        {
+                            <a class="nav-link" href="/Cart"><i class="fas fa-shopping-cart"></i> (@cartItems)</a>
+                        }
+                        else
+                        {
+                            <a class="nav-link" href="/Cart"><i class="fas fa-shopping-cart"></i> (0)</a>
+                        }
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="form-inline">
+            @await Html.PartialAsync("_LoginPartial")
+        </div>
+    </nav>
+
+    <partial name="_CookieConsentPartial" />
+
+    <div class="container body-content">
+
+        <div class="RenderBody">
+            @RenderBody()
+        </div>
+
+        <br />
+        <hr />
+
+    </div>
+
+    <footer class="footer">
+        <div class="cont">
+            <p class="text-white">&copy; 2018 - Tangy Restaurant</p>
+        </div>
+    </footer>
+
+    <environment include="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
+
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.css">
+
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/timepicker/1.3.5/jquery.timepicker.min.js"></script>
+
+

@@ -1,0 +1,109 @@
+﻿@model ApplicationUser
+@{
+    ViewData["Title"] = "Lock";
+}
+
+<style>
+    .form-border {
+        border: 1px solid #bbb9b9;
+        border-radius: 5px;
+        padding: 30px;
+    }
+
+    input:disabled {
+        cursor: not-allowed;
+    }
+</style>
+
+<h2>Permanently Lock User</h2>
+<hr />
+<br />
+
+<form method="post" asp-action="Lock">
+    <div class="form-border">
+
+        <div asp-validation-summary="ModelOnly"></div>
+
+        <input type="hidden" asp-for="@Model.Id" />
+        <input asp-for="@Model.Email" type="hidden" />
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label asp-for="@Model.FirstName"></label>
+            </div>
+            <div class="col-sm-4">
+                <input class="form-control" asp-for="@Model.FirstName" disabled type="text" />
+            </div>
+            <span asp-validation-for="@Model.FirstName" class="text-danger"></span>
+
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label asp-for="@Model.LastName"></label>
+            </div>
+            <div class="col-sm-4">
+                <input class="form-control" asp-for="@Model.LastName" disabled type="text" />
+            </div>
+            <span asp-validation-for="@Model.LastName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label asp-for="@Model.Email"></label>
+            </div>
+            <div class="col-sm-4">
+                <input asp-for="@Model.Email" disabled class="form-control" type="text" />
+            </div>
+            <span asp-validation-for="@Model.Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label asp-for="@Model.PhoneNumber"></label>
+            </div>
+            <div class="col-sm-4">
+                <input asp-for="@Model.PhoneNumber" class="form-control" disabled type="text" />
+            </div>
+            <span asp-validation-for="@Model.PhoneNumber" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label asp-for="@Model.LockoutEnd"></label>
+            </div>
+            <div class="col-sm-4">
+                <input asp-for="@Model.LockoutEnd" class="form-control" type="datetime-local" />
+            </div>
+            <span asp-validation-for="@Model.LockoutEnd" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label asp-for="@Model.LockoutReason"></label>
+            </div>
+            <div class="col-sm-4">
+                <textarea asp-for="@Model.LockoutReason" class="form-control">
+                </textarea>
+            </div>
+            <span asp-validation-for="@Model.LockoutReason" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label asp-for="@Model.AccessFailedCount"></label>
+            </div>
+            <div class="col-sm-4">
+                <input asp-for="@Model.AccessFailedCount" disabled class="form-control" type="number" />
+            </div>
+            <span asp-validation-for="@Model.AccessFailedCount" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <button class="btn btn-danger" type="submit">Lock <i class="fas fa-lock"></i></button>
+            <a class="btn btn-primary" asp-controller="User" asp-action="Index">Back <i class="fas fa-backward"></i></a>
+        </div>
+
+    </div>
+</form>
+

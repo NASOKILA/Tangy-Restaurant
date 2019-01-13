@@ -1,0 +1,46 @@
+﻿@model TangyRestaurant.Models.Category
+@{
+    ViewData["Title"] = "Details";
+}
+
+
+<h2>Category Details</h2>
+
+<hr />
+<br />
+
+<div class="form-border">
+    <fieldset disabled>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-3">
+                    <label asp-for="@Model.Name" class="custom-label"></label>
+                </div>
+                <div class="col-sm-5">
+                    <input type="text" value="@Model.Name" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-3">
+                    <label asp-for="@Model.DisplayOrder" class="custom-label"></label>
+                </div>
+                <div class="col-sm-5">
+                    <input type="text" value="@Model.DisplayOrder" class="form-control" />
+                </div>
+            </div>
+        </div>
+
+    </fieldset>
+
+    <br />
+
+    <div class="form-group">
+        <a asp-action="Index" class="btn btn-primary"><i class="fas fa-backward"></i> &nbsp; Back</a>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning"><i class="fas fa-edit"></i> &nbsp; Edit</a>
+    </div>
+
+</div>

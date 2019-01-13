@@ -1,0 +1,38 @@
+﻿@model TangyRestaurant.Models.ApplicationUser
+
+@inject TangyRestaurant.Data.ApplicationDbContext _db
+
+@{
+    //This is the view for our ViewComponent, we will use it insade the _LoginPartial
+    //we specify the model that we will pass to it
+
+    ViewData["Title"] = "Default";
+    string fullname = string.Empty;
+
+    ApplicationUser currentUser = null;
+    if (Model == null)
+    {
+        currentUser = _db.Users.First(u => u.Email == this.User.Identity.Name) as ApplicationUser;
+        fullname = currentUser.FirstName + " " + currentUser.LastName;
+
+    }
+    else
+    {
+        fullname = Model.FirstName + " " + Model.LastName;
+    }
+}
+
+
+@if (Model == null)
+{
+    if (currentUser != null)
+    {
+        @fullname <i class="far fa-user"></i>
+    }
+}
+else
+{
+    @fullname <i class="far fa-user"></i>
+}
+
+

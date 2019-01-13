@@ -1,0 +1,25 @@
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" id="logoutForm" class="navbar-right">
+        <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item">
+                @*Here we use our viewComponent which has its own model and a view that returns the full name of the user *@
+                <a asp-area="Identity" asp-page="/Account/Manage/Index" class="nav-link" title="Manage">Hi @await Component.InvokeAsync("UserName") !</a>
+            </li>
+            <li class="nav-item">
+                <button type="submit" class="btn btn-link navbar-btn nav-link">Logout <i class="fas fa-sign-out-alt"></i></button>
+            </li>
+        </ul>
+    </form>
+}
+else
+{
+    <ul class="navbar-nav navbar-collapse justify-content-end">
+        <li class="nav-item"><a asp-area="Identity" class="nav-link" asp-page="/Account/Register">Register <i class="fa fa-registered"></i></a></li>
+        <li class="nav-item"><a asp-area="Identity" class="nav-link" asp-page="/Account/Login">Login <i class="fas fa-sign-in-alt"></i> </a></li>
+    </ul>
+}

@@ -1,0 +1,26 @@
+﻿@model TangyRestaurant.Models.OrderDetailsViewModel.OrderDetailsViewModel
+@{
+    ViewData["Title"] = "Confirm";
+}
+
+<h2 class="text-info">Order Confirmation Page</h2>
+<hr />
+<br />
+
+@if (Model.OrderHeader == null)
+{
+    <h3 class="text-danger">Error... Please try again later.</h3>
+}
+else
+{
+    @if (Model.OrderDetailsList.Count >= 1)
+    {
+        @await Html.PartialAsync("_IndividualOrderDetails", Model)
+
+        <a asp-controller="Home" asp-action="Index" class="btn btn-success text-left">Place Another Order</a>
+    }
+    else
+    {
+        <p>No orders in database .</p>
+    }
+}

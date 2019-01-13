@@ -1,0 +1,46 @@
+﻿@model IEnumerable<TangyRestaurant.Models.MenuItem>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Menu Item List</h2>
+<hr />
+<br />
+
+@await Html.PartialAsync("_CreateButtonPartialView")
+
+<br />
+<br />
+
+<div class="form-border">
+    <br />
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.Name)</th>
+                <th>@Html.DisplayNameFor(m => m.Price)</th>
+                <th>@Html.DisplayNameFor(m => m.Category)</th>
+                <th>@Html.DisplayNameFor(m => m.SubCategory)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var menuItem in Model)
+            {
+                <tr>
+                    <td>@menuItem.Name</td>
+                    <td>@menuItem.Price</td>
+                    <td>@menuItem.Category.Name</td>
+                    <td>@menuItem.SubCategory.Name</td>
+                    <td>
+                        @await Html.PartialAsync("_TableButtonPartialView", menuItem.Id)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @if (Model.Count() < 1)
+    {
+        <p>No menu items in db. . .</p>
+    }
+
+</div>

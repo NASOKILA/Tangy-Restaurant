@@ -1,0 +1,43 @@
+﻿@model ICollection<TangyRestaurant.Models.SubCategory>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Sub Category List</h2>
+<hr />
+<br />
+
+@await Html.PartialAsync("_CreateButtonPartialView")
+
+<br />
+<br />
+
+<div class="form-border">
+    <br />
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Sub Category</th>
+                <th>Category Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var subCategory in Model)
+            {
+                <tr>
+                    <td>@subCategory.Name</td>
+                    <td>@subCategory.category.Name</td>
+                    <td>
+                        @await Html.PartialAsync("_TableButtonPartialView", subCategory.Id)
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @if (Model.Count < 1)
+    {
+        <p>No categories in db. . .</p>
+    }
+        
+</div>

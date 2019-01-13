@@ -1,0 +1,99 @@
+﻿@model TangyRestaurant.Models.Coupon
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create Coupon</h2>
+<hr />
+<br />
+
+<div class="form-border">
+    <form method="post" asp-action="Create" enctype="multipart/form-data">
+
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="@Model.Name" class="custom-label"></label>
+                </div>
+                <div class="col-sm-6">
+                    <input asp-for="@Model.Name" type="text" class="form-control" />
+                </div>
+                <span asp-validation-for="@Model.Name" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="@Model.CouponType" class="custom-label">Coupon Type</label>
+                </div>
+                <div class="col-sm-6">
+                    <select asp-for="@Model.CouponType" asp-items="Html.GetEnumSelectList<Coupon.ECouponType>()" type="text" class="form-control"></select>
+                </div>
+                <span asp-validation-for="@Model.CouponType" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="@Model.Discount" class="custom-label"></label>
+                </div>
+                <div class="col-sm-6">
+                    <input asp-for="@Model.Discount" class="form-control" />
+                </div>
+                <span asp-validation-for="@Model.Discount" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="@Model.MinAmount" class="custom-label">Min Amount</label>
+                </div>
+                <div class="col-sm-6">
+                    <input asp-for="@Model.MinAmount" class="form-control" />
+                </div>
+                <span asp-validation-for="@Model.MinAmount" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="@Model.Picture" class="custom-label"></label>
+                </div>
+                <div class="col-sm-6">
+                    <input type="file" name="files" multiple class="form-control" />
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+                <div class="col-sm-2">
+                    <label asp-for="@Model.IsActive" class="custom-label">Is Active</label>
+                </div>
+                <div class="col-sm-6">
+                    <input asp-for="@Model.IsActive" class="form-control" />
+                </div>
+                <span asp-validation-for="@Model.IsActive" class="text-danger"></span>
+            </div>
+        </div>
+
+        <br />
+
+        <div class="form-group">
+            <a asp-action="Index" class="btn btn-primary"><i class="fas fa-backward"></i> &nbsp; Back</a>
+            <button type="submit" class="btn btn-success"><i class="fas fa-plus"></i> &nbsp; Create</button>
+        </div>
+
+    </form>
+
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

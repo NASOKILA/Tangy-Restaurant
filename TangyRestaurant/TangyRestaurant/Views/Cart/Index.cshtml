@@ -1,0 +1,295 @@
+﻿@model TangyRestaurant.Models.OrderDetailsViewModel.OrderDetailsCart
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Your Shopping Cart</h2>
+<hr />
+<br />
+
+<form method="post" id="cartForm">
+
+    @if (Model.ShoppingCart.Count < 1)
+    {
+        <p>No items added to the shoping cart.</p>
+        <a asp-controller="Home" asp-action="Index" class="btn btn-success">
+            Add Items
+        </a>
+    }
+    else
+    {
+        <div class="border border-info" style="padding:15px;">
+            <div class="container">
+
+                <input hidden asp-for="@Model.ShoppingCart[0].ApplicationUserId" />
+                <input hidden asp-for="@Model.ShoppingCart[0].Count" />
+                <input hidden asp-for="@Model.OrderHeader.UserId" />
+
+                <table class="table table-striped" width="100%">
+                    <thead>
+                        <tr style="background-color: lightgray">
+                            <th></th>
+                            <th style="text-align:center; width: 70px;">
+                                <label asp-for="ShoppingCart[0].MenuItem.Price"></label>
+                            </th>
+                            <th style="text-align:center; width: 70px;">
+                                <label asp-for="ShoppingCart[0].Count"></label>
+                            </th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @for (int i = 0; i < Model.ShoppingCart.Count; i++)
+                        {
+                            ShoppingCart item = Model.ShoppingCart[i];
+
+                            Model.OrderHeader.OrderTotal += item.MenuItem.Price * item.Count;
+
+                            string color = "white";
+
+                            if (i % 2 == 1)
+                            {
+                                color = "lightgrey";
+                            }
+
+                            <tr style="padding: 50px; background-color: @color;">
+                                <td>
+                                    <b>
+                                        @Html.DisplayFor(c => item.MenuItem.Name)
+                                    </b>
+                                    <br />
+                                    @Html.DisplayFor(c => item.MenuItem.Description)
+                                </td>
+                                <td style="text-align:center; width:70px;">
+                                    @Html.DisplayFor(c => item.MenuItem.Price)
+                                </td>
+                                <td style="text-align:center; width:70px;">
+                                    @Html.DisplayFor(c => item.Count)
+                                </td>
+
+                                <td>
+                                    <button class="btn btn-primary" asp-action="IncreaseCount" asp-route-cartId="@item.Id">
+                                        <i class="fas fa-plus"></i>
+                                    </button>
+                                    <button class="btn btn-danger" asp-action="DecreaseCount" asp-route-cartId="@item.Id">
+                                        <i class="fas fa-minus"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <br />
+            <br />
+
+            <div class="container">
+                <div class="col-sm-12 row" style="padding:5px">
+                    <div class="col-sm-2">
+                        <label>Coupon Code :</label>
+                    </div>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="txtCouponCode" asp-for="OrderHeader.CouponCode" />
+                    </div>
+                    <div class="col-sm-4">
+                        <button type="button" class="btn btn-sm btn-success" id="applyCouponBtn">Apply <i class="fas fa-plus"></i></button>
+                        <button hidden type="button" class="btn btn-sm btn-danger" id="removeCouponBtn">Remove <i class="fas fa-trash-alt"></i></button>
+                    </div>
+                    <div class="col-sm-4"></div>
+                </div>
+
+                <div class="col-sm-12 row" style="padding:5px">
+                    <div class="col-sm-2">
+                        <label>Order Total:</label>
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="text" class="form-control" id="orderTotal" style="cursor:not-allowed;" asp-for="OrderHeader.OrderTotal" readonly />
+                    </div>
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-2">Pick Up Time :</div>
+                    <div class="col-sm-3">
+                        <input class="form-control" type="text" id="timePicker" onchange="ValidatePickUpTimeField()" value="" asp-for="OrderHeader.PickUpTime" />
+                    </div>
+                </div>
+
+                <div class="col-sm-12 row" style="padding:5px">
+                    <div class="col-sm-2">Comments :</div>
+                    <div class="col-sm-10">
+                        <textarea class="form-control" rows="4" cols="50" id="txtComments" asp-for="OrderHeader.Comments"></textarea>
+                    </div>
+                </div>
+                <div class="col-sm-12 row" style="padding:5px">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-5">
+                        <label class="text-danger" style="display:none;" id="lblShopClosed">Restaurant is closed for the day.</label>
+                    </div>
+
+
+                    <div class="col-sm-5">
+                        <button style="float:right" type="button" onclick="ValidateInput()" id="btnPlaceOrder" class="btn btn-success">Place Order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+</form>
+
+@section Scripts {
+
+    <script>
+
+        //Validate the coupon code upon changing the input field
+        function ValidatePickUpTimeField() {
+            var time = document.getElementById("timePicker").value;
+
+            if (!(time.toString().endsWith("PM") || time.toString().endsWith("AM"))) {
+                alert("Please select pickup time.");
+                console.log(time);
+                $("#timePicker").focus();
+            }
+        }
+
+
+        //Validate the coupon code upon clicking the Place Order btn
+        function ValidateInput() {
+
+            var time = document.getElementById("timePicker").value;
+
+            if (!(time.toString().endsWith("PM") || time.toString().endsWith("AM"))) {
+                alert("Please select pickup time.");
+                console.log(time);
+                $("#timePicker").focus();
+            }
+            else {
+                console.log("SUBMIT")
+                console.log(time);
+                $("#cartForm").submit();
+            }
+        }
+
+
+        //When the document is ready we set the current time to the input field
+        $(document).ready(function () {
+
+            //Restaurant is open from 10am to 12pm
+            var currentDate = new Date();
+
+            var minTime = "";
+
+            if (currentDate.getHours < 11) {
+                minTime = "12:00pm";
+            }
+            else {
+                if (currentDate.getMinutes() < 30) {
+                    //if current hour is 13:25 they can pick it up on 13:30
+                    minTime = (currentDate.getHours() + 1).toString() + ":30pm";
+                }
+                else {
+                    //if current hour is 13:35 they can pick it up on 14:00
+                    minTime = (currentDate.getHours() + 2).toString() + ":00pm";
+                }
+            }
+
+            if (currentDate.getHours() > 20) {
+
+                //Restaurant is closed
+                $("#timePicker").attr("disabled", true).css("cursor", "not-allowed");
+                $("#txtComments").attr("disabled", true).css("cursor", "not-allowed");
+                $("#txtCouponCode").attr("disabled", true).css("cursor", "not-allowed");
+                $("#btnPlaceOrder").attr("disabled", true).css("cursor", "not-allowed");
+                $("#applyCouponBtn").attr("disabled", true).css("cursor", "not-allowed");
+                
+                $("#lblShopClosed").show();
+
+            }
+
+            let inputDateDiv = $("#timePicker");
+
+            inputDateDiv.timepicker({
+                minTime: minTime,
+                maxTime: "22:00pm",
+            });
+
+        });
+
+
+        sessionStorage.setItem("OldOrderTotal", $("#orderTotal").val());
+
+
+        //Call the webAPI when we click the applyCoupon btn
+        $("#applyCouponBtn").click((e) => {
+            
+            $.ajax({
+                method: "GET",
+                url: "/api/CouponAPI/AddCoupon",
+                data: {
+                    orderTotal: $("#orderTotal").val(),
+                    couponCode: $("#txtCouponCode").val()
+                },
+                success: (res) => {
+                    console.log("RES ADD")
+                    console.log(res)
+
+                    let message = res.toString().split(":")[1]
+
+                    if (message !== "Success.") {
+                        alert(message);
+                    }
+                    else {
+
+                        let newOrderTotal = res.toString().split(":")[0];
+
+                        $("#orderTotal").val(Math.round(newOrderTotal * 100 / 100).toFixed(2));
+
+                        $("#applyCouponBtn").attr("hidden", true);
+                        $("#removeCouponBtn").attr("hidden", false);
+                        $("#txtCouponCode").attr("readonly", true);
+                    }
+                },
+                error: (err) => {
+                    console.log("ERR")
+                    console.log(err)
+                }
+            })
+        });
+
+
+        //Call the webAPI when we click the removeCoupon btn
+        $("#removeCouponBtn").click((e) => {
+
+            $.ajax({
+                method: "GET",
+                url: "/api/CouponAPI/RemoveCoupon",
+                data: {
+                    orderTotal: $("#orderTotal").val(),
+                    couponCode: $("#txtCouponCode").val()
+                },
+                success: (res) => {
+                    console.log("RES DELETE");
+                    console.log(res);
+
+                    let message = res.toString().split(":")[1]
+
+                    if (message !== "Success.") {
+                        alert(message);
+                    }
+                    else {
+
+                        $("#orderTotal").val(sessionStorage.getItem("OldOrderTotal"));
+                        $("#applyCouponBtn").attr("hidden", false);
+                        $("#removeCouponBtn").attr("hidden", true);
+                        $("#txtCouponCode").attr("readonly", false);
+                        $("#txtCouponCode").val("");
+                    }
+                },
+                error: (err) => {
+                    console.log("ERR")
+                    console.log(err)
+                }
+            })
+        });
+        
+    </script>
+
+}

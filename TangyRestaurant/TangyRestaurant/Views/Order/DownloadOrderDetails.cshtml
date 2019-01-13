@@ -1,0 +1,83 @@
+﻿@model TangyRestaurant.Models.DatesForCsvViewModel
+@{
+    ViewData["Title"] = "DownloadOrderDetails";
+}
+
+<h2 class="text-info">Download Order Details</h2>
+<hr />
+<br />
+
+<form method="post" class="form-group form-border border-rounded">
+    <h4 class="text-info">Select Date Range :</h4>
+    <br />
+    <div class="col-sm-12 row">
+        <div class="col-sm-2">Start Date : </div>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" value="@Model.StartDate.ToString("dd/MM/yyyy")" asp-for="StartDate" id="startDateDownload" onchange="GetStartDate()" />
+            <span class="text-danger" id="startDatesMessage" style="display:none;">Start date should be before the end date.</span>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <br />
+    <div class="col-sm-12 row">
+        <div class="col-sm-2">End Date : </div>
+        <div class="col-sm-6">
+            <input type="text" class="form-control" value="@Model.EndDate.ToString("dd/MM/yyyy")" asp-for="EndDate" id="endDateDownload" onchange="GetEndDate()" disabled />
+            <span class="text-danger" id="endDatesMessage" style="display:none;">End date should be after the start date.</span>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+    <br />
+    <div class="col-sm-12 row">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-4">
+            <button type="submit" disabled class="btn btn-primary" id="downloadCsvButton" style="width:100%"><i class="fas fa-download"></i> Download</button>
+        </div>
+        <div class="col-sm-6"></div>
+    </div>
+</form>
+
+<script>
+
+    let endDate = new Date();
+
+    $("#startDateDownload").datepicker({
+        maxDate: endDate, onSelect: function (date) {
+
+            var selectedDate = new Date(date);
+            let endDate = new Date($("#endDateDownload").val());
+
+            if (selectedDate > endDate) {
+                $("#startDateDownload").val("");
+                $("#startDatesMessage").show();
+            } else {
+                $("#startDatesMessage").hide();
+            }
+
+
+            if (date.length === 10)
+                $("#endDateDownload").attr("disabled", false);
+            else
+                $("#endDateDownload").attr("disabled", true);
+
+        }
+    });
+
+    $("#endDateDownload").datepicker({
+        maxDate: endDate, onSelect: function (data) {
+
+            let endDate = new Date(data);
+            let startDate = new Date($("#startDateDownload").val());
+
+            if (endDate < startDate) {
+                $("#endDateDownload").val("");
+                $("#endDatesMessage").show();
+            } else {
+                $("#endDatesMessage").hide();
+                $("#downloadCsvButton").attr("disabled", false);
+            }
+
+        }
+    });
+
+</script>

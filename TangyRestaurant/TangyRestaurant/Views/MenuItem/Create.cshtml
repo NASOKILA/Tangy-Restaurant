@@ -1,0 +1,159 @@
+﻿@model TangyRestaurant.Models.MenuItemsViewModels.MenuItemsViewModel
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h2>Create Menu Item</h2>
+<hr />
+<br />
+
+<form method="post" enctype="multipart/form-data">
+    <div class="form-border">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label asp-for="@Model.MenuItem.Name" class="custom-label"></label>
+            </div>
+            <div class="col-sm-5">
+                <input asp-for="@Model.MenuItem.Name" class="form-control" />
+            </div>
+
+            <span asp-validation-for="@Model.MenuItem.Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label asp-for="@Model.MenuItem.Description" class="custom-label"></label>
+            </div>
+            <div class="col-sm-5">
+                <textarea asp-for="@Model.MenuItem.Description" class="form-control"></textarea>
+            </div>
+
+            <span asp-validation-for="@Model.MenuItem.Description" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label asp-for="@Model.MenuItem.Price" class="custom-label"></label>
+            </div>
+            <div class="col-sm-5">
+                <input asp-for="@Model.MenuItem.Price" onchange="FixPrice()" id="price-menuItem" type="number" class="form-control" />
+            </div>
+
+            <span asp-validation-for="@Model.MenuItem.Price" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label asp-for="@Model.MenuItem.Image" class="custom-label"></label>
+            </div>
+            <div class="col-sm-5">
+                <input type="file" name="files" multiple class="form-control" />
+            </div>
+
+            <span asp-validation-for="@Model.MenuItem.Image" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label asp-for="@Model.MenuItem.Spicyness" class="custom-label"></label>
+            </div>
+            <div class="col-sm-5">
+                <select asp-for="@Model.MenuItem.Spicyness" asp-items="Html.GetEnumSelectList<MenuItem.Espicy>()" class="form-control"></select>
+            </div>
+
+            <span asp-validation-for="@Model.MenuItem.Name" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label asp-for="@Model.MenuItem.CategoryId" class="custom-label">Category</label>
+            </div>
+            <div class="col-sm-5">
+                <select asp-for="@Model.MenuItem.CategoryId" onchange="AdjustSubcategories()" id="CategoryId" class="form-control">
+                    @foreach (var c in Model.Categories)
+                    {
+                        <option value="@c.Id">@c.Name</option>
+                    }
+                </select>
+            </div>
+
+            <span asp-validation-for="@Model.MenuItem.CategoryId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-2">
+                <label asp-for="@Model.MenuItem.SubCategoryId" class="custom-label">Sub Category</label>
+            </div>
+            <div class="col-sm-5">
+                <select asp-for="@Model.MenuItem.SubCategoryId" id="SubcategoryId" class="form-control">
+                </select>
+                <!--They have to be selected based on what Category we have selected, we will do that with javascript-->
+            </div>
+
+            <span asp-validation-for="@Model.MenuItem.SubCategoryId" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <a asp-controller="MenuItem" asp-action="Index" class="btn btn-primary">Back <i class="fas fa-backward"></i></a>
+            <button type="submit" class="btn btn-success">Create <i class="fas fa-plus"></i></button>
+        </div>
+    </div>
+
+</form>
+
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+
+
+    <script>
+
+        (function () { 
+            AdjustSubcategories();
+        })();
+
+        function AdjustSubcategories() {
+            
+            let categoryId = document.getElementById("CategoryId").value;
+            
+            $.ajax({
+                url: "/MenuItem/GetAllSubCategories",
+                success: function (res) {
+
+                    let filteredSubCategories = res.filter(function (subCat) {
+
+                        if (subCat.category.id == categoryId) {
+                            return subCat;
+                        }
+                    });
+
+                    //get the subcategory select element
+                    let selectSubcategory = document.getElementById("SubcategoryId");
+
+                    //clear the old options in it
+                    $('#SubcategoryId').empty();
+                    
+                    //fill it with subCategories
+                    filteredSubCategories.forEach(sc => {
+                        
+                        //Create and append an option to the subcategory dropdown
+                        var option = document.createElement("option");
+                        
+                        option.text = sc.name;
+                        option.value = sc.id;
+                        selectSubcategory.add(option);
+
+                    });
+                },
+                error: function (err) {
+                    console.log("Error :")
+                    console.log(err)
+                }
+            });
+        }
+        
+    </script>
+}
+

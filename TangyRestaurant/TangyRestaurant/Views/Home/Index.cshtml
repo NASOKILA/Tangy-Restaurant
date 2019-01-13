@@ -1,0 +1,83 @@
+﻿@model TangyRestaurant.Models.HomeViewModel.IndexViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+@await Html.PartialAsync("_StatusMessage", Model.StatusMessage)
+<h2>Home Page</h2>
+<hr />
+<br />
+
+@*We check if coupons exist*@
+@if (Model.Coupons.Count() > 0)
+{
+    <div class="container border">
+        <div class="carousel" data-ride="carousel" data-interval="2500">
+            @for (int i = 0; i < Model.Coupons.Count(); i++)
+            {
+                if (i == 0)
+                {
+                    //we need to activate the first element
+                    <div class="carousel-item active">
+                        @{
+                            string image = string.Empty;
+
+                            var pic = Model.Coupons.ToList()[i].Picture;
+
+                            if (pic != null)
+                            {
+                                var base64 = Convert.ToBase64String(pic);
+                                image = string.Format("data:image/jpg;base64, {0}", base64);
+                            }
+                        }
+
+                        @if (pic != null)
+                        {
+                            <img src="@(image)" height="50px" width="100%" class="d-block w-100" />
+                        }
+
+                    </div>
+                }
+                else
+                {
+                    //We outut the same thing but without the active class
+                    <div class="carousel-item">
+                        @{
+                            string image = string.Empty;
+
+                            var pic = Model.Coupons.ToList()[i].Picture;
+
+                            if (pic != null)
+                            {
+                                var base64 = Convert.ToBase64String(pic);
+                                image = string.Format("data:image/jpg;base64, {0}", base64);
+                            }
+                        }
+
+                        @if (pic != null)
+                        {
+                            <img src="@image" height="50px" width="100%" class="d-block w-100" />
+                        }
+
+                    </div>
+                }
+
+            }
+        </div>
+    </div>
+}
+else
+{
+    <p>No records to display. . .</p>
+}
+<br />
+<br />
+
+@foreach (var category in Model.Categories)
+{
+    <h3 class="text-success">@category.Name</h3>
+    <div class="row" style="padding-bottom: 50px">
+        @await Html.PartialAsync("_ThumbnailAreaPartialView", Model.MenuItems.Where(mi => mi.Category.Name == category.Name))
+    </div>
+}
+

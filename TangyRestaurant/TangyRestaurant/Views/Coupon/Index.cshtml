@@ -1,0 +1,47 @@
+﻿@model IEnumerable<TangyRestaurant.Models.Coupon>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Coupons List</h2>
+
+<hr />
+<br />
+
+@await Html.PartialAsync("_CreateButtonPartialView")
+
+<br />
+<br />
+
+<div class="form-border">
+    <br />
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>@Html.DisplayNameFor(m => m.Name)</th>
+                <th>@Html.DisplayNameFor(m => m.Discount)</th>
+                <th>@Html.DisplayNameFor(m => m.MinAmount)</th>
+                <th>@Html.DisplayNameFor(m => m.IsActive)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var coupon in Model)
+            {
+                <tr>
+                    <td>@coupon.Name</td>
+                    <td>@coupon.Discount</td>
+                    <td>@coupon.MinAmount</td>
+                    <td>@coupon.IsActive</td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@coupon.Id" class="btn btn-warning"><i class="fas fa-edit"></i></a>
+                        <a asp-action="Delete" asp-route-id="@coupon.Id" class="btn btn-danger"><i class="fas fa-trash-alt"></i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    @if (Model.Count() < 1)
+    {
+        <p>No coupons in db. . .</p>
+    }
+</div>

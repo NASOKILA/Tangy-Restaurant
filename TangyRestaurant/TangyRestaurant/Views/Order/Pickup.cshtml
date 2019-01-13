@@ -1,0 +1,128 @@
+﻿@model List<TangyRestaurant.Models.OrderDetailsViewModel.OrderDetailsViewModel>
+@{
+    ViewData["Title"] = "Pickup";
+}
+
+@using TangyRestaurant.Utility
+
+<form method="get">
+    <div class="col-sm-12" style="background-color: aliceblue;height:150px;">
+        <h4 class="text-info">Search Criteria</h4>
+        <div class="row">
+            <div class="col-sm-2">
+                <label>Order Number</label>
+            </div>
+            <div class="col-sm-3">
+                <input type="text" onchange="DisableFields()" id="orderNumber" name="orderNumber" class="form-control" />
+            </div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-2">
+                <label>Phone Number</label>
+            </div>
+            <div class="col-sm-3">
+                <input type="text" onchange="DisableFields()" id="phoneNumber" name="phoneNumber" class="form-control" />
+            </div>
+        </div>
+        <br />
+        <div class="row">
+            <div class="col-sm-2">
+                <label>Email</label>
+            </div>
+            <div class="col-sm-3">
+                <input type="text" onchange="DisableFields()" id="email" name="email" class="typeahead form-control" />
+            </div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-2"></div>
+            <div class="col-sm-3">
+                <button type="submit" class="btn btn-primary" style="width:100%;"><i class="fas fa-search"></i> Search</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<br />
+<br />
+
+<form method="get">
+
+    <h2 class="text-info">Orders :</h2>
+    <hr />
+
+    @if (Model.Any(m => m.OrderHeader == null))
+    {
+        <h3 class="text-danger">Error... Please try again later.</h3>
+    }
+    else
+    {
+        @if (Model.Count > 0)
+        {
+            @foreach (var item in Model)
+            {
+                <div class="container col-sm-12 row">
+                    <div class="col-sm-10">
+                        @await Html.PartialAsync("_IndividualOrderDetails", item)
+                    </div>
+                    <div class="col-sm-2" style="position:relative; top:12px;">
+
+                        @if (item.OrderHeader.Status.Equals(SD.StatusReady))
+                        {
+                            <a asp-action="ConfirmPickupDetails" asp-route-id="@item.OrderHeader.Id" class="btn btn-success text-white" style="width:100%"><i class="far fa-thumbs-up"></i> Pick Up Details</a>
+                        }
+                        else if (item.OrderHeader.Status.Equals(SD.StatusSubmitted))
+                        {
+                            //<button type="submit" asp-action="Ready" asp-route-id="@item.OrderHeader.Id" class="btn btn-success text-white" style="width:100%"><i class="far fa-thumbs-up"></i> Pick Up Details</button>
+                        }
+                        else if (item.OrderHeader.Status.Equals(SD.StatusInProcess))
+                        {
+                            //<button type="submit" asp-action="Ready" asp-route-id="@item.OrderHeader.Id" class="btn btn-success text-white" style="width:100%"><i class="far fa-thumbs-up"></i> Pick Up Details</button>
+                        }
+                        else if (item.OrderHeader.Status.Equals(SD.StatusCancelled))
+                        {
+                            //<button type="submit" asp-action="Ready" asp-route-id="@item.OrderHeader.Id" class="btn btn-success text-white" style="width:100%"><i class="far fa-thumbs-up"></i> Pick Up Details</button>
+                        }
+                        else if (item.OrderHeader.Status.Equals(SD.StatusCompleted))
+                        {
+                            //<button type="submit" asp-action="Ready" asp-route-id="@item.OrderHeader.Id" class="btn btn-primary text-white" style="width:100%"><i class="far fa-thumbs-up"></i> Completed</button>
+                        }
+
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>No orders in database .</p>
+        }
+    }
+</form>
+
+@section Scripts {
+    <script>
+
+        let DisableFields = () => {
+
+            let phoneNumber = document.getElementById("phoneNumber").value;
+            let orderNumber = document.getElementById("orderNumber").value;
+            let email = document.getElementById("email").value;
+
+            if (phoneNumber !== "") {
+                $("#orderNumber").attr("disabled", true);
+                $("#email").attr("disabled", true);
+            }
+            else if (orderNumber !== "") {
+                $("#phoneNumber").attr("disabled", true);
+                $("#email").attr("disabled", true);
+            }
+            else if (email !== "") {
+                $("#orderNumber").attr("disabled", true);
+                $("#phoneNumber").attr("disabled", true);
+            }
+            else {
+                $("#orderNumber").attr("disabled", false);
+                $("#phoneNumber").attr("disabled", false);
+                $("#email").attr("disabled", false);
+            }
+        }
+
+    </script>
+}

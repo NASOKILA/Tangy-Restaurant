@@ -1,0 +1,52 @@
+﻿@model TangyRestaurant.Models.HistoryViewModel
+@{
+    ViewData["Title"] = "History";
+}
+
+<h2>Order History</h2>
+<hr />
+<br/>
+
+@if (Model.Orders.Any(m => m.OrderHeader == null))
+{
+    <h3 class="text-danger">Error... Please try again later.</h3>
+}
+else
+{
+    @foreach (var item in Model.Orders)
+    {
+        @if (item.OrderDetailsList.Count >= 1)
+        {
+            @await Html.PartialAsync("_IndividualOrderDetails", item)
+        }
+        else
+        {
+            <p>No orders in database .</p>
+        }
+    }
+
+    if (Model.Orders.Count < 1)
+    { 
+        <p> No orders in database.</p>
+    }
+}
+<br />
+@*Here we use our own tag helper for the pagination and we have called it "page-model".
+    page-action , page-classes-enabled  and more are just properties of the taghelper*@
+<div page-model="@Model.PagingInfo"
+     page-action="History"
+     page-classes-enabled="true"
+     page-class="btn border"
+     page-class-normal="btn btn-default active"
+     page-class-selected="btn btn-primary active"
+     class="btn-group m-1"></div>
+<br />
+
+@*TO USE THIS TAG HELPER WE HAVE TO LET THE APP KNOW THAT IT EXISTS, SO WE CAN ADD IT HERE ON THIS PAGE OR WE IN THE _ViewImports.cshtml FILE !!!
+
+    @addTagHelper TangyRestaurant.TagHelpers*, PageLinkTagHelper
+
+*@
+
+
+

@@ -1,0 +1,58 @@
+﻿@model TangyRestaurant.Models.OrderDetailsViewModel.OrderDetailsViewModel
+
+<div class="col-sm-12 row rounded" style="background-color: aliceblue; padding:10px; margin:10px 0px;">
+    <div class="col-sm-6">
+        <label class="text-danger">Order Number : @Model.OrderHeader.Id</label>
+        <ul>
+            @foreach (OrderDetails item in Model.OrderDetailsList)
+            {
+                <li>
+                    <a href="/Home/Details/@item.MenuItem.Id">@(item.MenuItem.Name) x @(item.Count)</a>
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="col-sm-6">
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4">
+                <label>Order Total :</label>
+            </div>
+            <div class="col-sm-6">
+                <p>@Model.OrderHeader.OrderTotal </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4">
+                <label>PickUp Time :</label>
+            </div>
+            <div class="col-sm-6">
+                <p>@Model.OrderHeader.PickUpTime.ToString("dd/MM/yyyy HH:mm tt")</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4">
+                <label>Order Status :</label>
+            </div>
+            <div class="col-sm-6">
+                <p>@Model.OrderHeader.Status</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-2"></div>
+            <div class="col-sm-4">
+                <label>Comments :</label>
+            </div>
+            <div class="col-sm-6">
+                <p>@Model.OrderHeader.Comments</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+

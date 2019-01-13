@@ -1,0 +1,98 @@
+
+Bootstrap 4 removed glyphicons, we have to use font-awesome.
+
+Change bootstrap version by simply downloading it and replacing the css and js folders 
+with the new ones.
+
+Remember to fix the connection string when creating new project
+
+
+------------------
+
+
+Category:
+	Scaffolding is basically generating code automatically.
+	
+<fieldset disabled>
+
+</fieldset>
+	//Now everithing insade this fieldset will be disabled
+
+
+When we don't know what type of exeption we have to throw we just write "trow" !!!
+
+If we have the same type and number of parmeters in a HttpGet and HttpPost methods
+we CANNOT have the same names for them.
+
+
+--------------------
+
+
+It' alwais better to bind properties instead of using ViewBag because it causes 
+to many errors.
+
+
+
+
+
+
+
+
+
+
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <label asp-for="menuItem.CategoryType.Name" class="custom-label"></label>
+                </div>
+                <div class="col-sm-4">
+                    <select asp-for="menuItem.CategoryType.Name" class="form-control">
+                        @foreach (CategoryType categ in Model.categoryTypes)
+                        {
+                            <option>@categ.Name</option>
+                        }
+                    </select>
+                </div>
+                <span asp-validation-for="menuItem.CategoryType.Name" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="col-sm-2">
+                    <label asp-for="menuItem.FoodType.Name" class="custom-label"></label>
+                </div>
+                <div class="col-sm-4">
+                    <select asp-for="menuItem.FoodType.Name" class="form-control">
+                        @foreach (FoodType food in Model.foodTypes)
+                        {
+                            <option>@food.Name</option>
+                        }
+                    </select>
+                </div>
+                <span asp-validation-for="menuItem.CategoryType.Name" class="text-danger"></span>
+            </div>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
