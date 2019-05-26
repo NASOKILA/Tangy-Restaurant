@@ -14,5 +14,9 @@
     <WebStackScaffolding_DependencyDialogWidth>600</WebStackScaffolding_DependencyDialogWidth>
     <WebStackScaffolding_LayoutPageFile />
     <NameOfLastUsedPublishProfile>TangyRestaurant20190110040711 - Web Deploy</NameOfLastUsedPublishProfile>
+    <ActiveDebugProfile>TangyRestaurant</ActiveDebugProfile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
 </Project>
