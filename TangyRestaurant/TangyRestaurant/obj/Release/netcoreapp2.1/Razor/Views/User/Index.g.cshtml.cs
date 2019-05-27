@@ -140,7 +140,7 @@ using TangyRestaurant.TagHelpers;
             WriteLiteral("</td>\r\n                    <td>\r\n                        ");
             EndContext();
             BeginContext(786, 122, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3e279f0ad57c46558535d46e34ea443d", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c6473929691e47adbe53d0d29baf55f3", async() => {
                 BeginContext(877, 27, true);
                 WriteLiteral("<i class=\"fas fa-edit\"></i>");
                 EndContext();
@@ -187,7 +187,7 @@ using TangyRestaurant.TagHelpers;
             WriteLiteral("                            ");
             EndContext();
             BeginContext(1020, 121, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "48e0a359e4634f12a9aa326422de003e", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "468e21d25f5b45c5b06a15e7f2c0deea", async() => {
                 BeginContext(1110, 27, true);
                 WriteLiteral("<i class=\"fas fa-lock\"></i>");
                 EndContext();
@@ -235,7 +235,7 @@ using TangyRestaurant.TagHelpers;
             WriteLiteral("                            ");
             EndContext();
             BeginContext(1255, 126, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4771514bf8b0450e85534de4c354d845", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e3e65c3c7db647cdb603b8f33a1d110f", async() => {
                 BeginContext(1348, 29, true);
                 WriteLiteral("<i class=\"fas fa-unlock\"></i>");
                 EndContext();

@@ -163,7 +163,7 @@ using TangyRestaurant.TagHelpers;
             WriteLiteral("</p>\r\n                        <br/>\r\n                        ");
             EndContext();
             BeginContext(1551, 133, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "19dbaad172b0461d9802ea2ececfadf1", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2fd4c0ae1de4471abd4ec98a0f233063", async() => {
                 BeginContext(1645, 35, true);
                 WriteLiteral("<i class=\"fas fa-info\"></i> Details");
                 EndContext();

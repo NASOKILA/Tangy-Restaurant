@@ -80,7 +80,7 @@ using TangyRestaurant.Utility;
             WriteLiteral("\r\n<h2 class=\"text-info\">Confirm Pickup Details</h2>\r\n<hr />\r\n<br />\r\n\r\n");
             EndContext();
             BeginContext(265, 4672, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a52c7db87b474b30823ea4ced6889f35", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e0d7e02ae3ca4fa590703ca1dbb70793", async() => {
                 BeginContext(317, 271, true);
                 WriteLiteral(@"
     <div class=""col-sm-8 container"">
@@ -321,7 +321,7 @@ WriteAttributeValue("", 2270, Model.OrderHeader.Comments.Substring(0, Math.Min(M
                 WriteLiteral("            ");
                 EndContext();
                 BeginContext(4546, 170, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c138f30fe5f84daca448ca2161fa83ad", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ca2c355d3c71417da11e750b5dad59a6", async() => {
                     BeginContext(4659, 48, true);
                     WriteLiteral("<i class=\"far fa-thumbs-up\"></i> Pick Up Details");
                     EndContext();
@@ -367,7 +367,7 @@ WriteAttributeValue("", 2270, Model.OrderHeader.Comments.Substring(0, Math.Min(M
                 WriteLiteral("            ");
                 EndContext();
                 BeginContext(4766, 137, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "2ffa1e3f5e7a4140b07b8cc6b3a656af", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d72031d6029940ca8198cb190c213fa6", async() => {
                     BeginContext(4888, 6, true);
                     WriteLiteral("Submit");
                     EndContext();

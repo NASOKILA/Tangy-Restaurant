@@ -83,7 +83,7 @@ using TangyRestaurant.Utility;
             WriteLiteral("\r\n<h2 class=\"text-info\">Manage Order\'s</h2>\r\n<hr />\r\n<br />\r\n\r\n");
             EndContext();
             BeginContext(220, 1666, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9690126b9bb54c0888c5ccfe745603bb", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3f1a1a20346149f0b02b803c5655e83d", async() => {
                 BeginContext(240, 4, true);
                 WriteLiteral("\r\n\r\n");
                 EndContext();
@@ -140,7 +140,7 @@ using TangyRestaurant.Utility;
                 WriteLiteral("                            ");
                 EndContext();
                 BeginContext(925, 187, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a0a6783961fb4591839e3ca99d964c81", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ee32eb59227c40d2a5a6685e1f5ed227", async() => {
                     BeginContext(1061, 42, true);
                     WriteLiteral("<i class=\"fas fa-check\"></i> Start Cooking");
                     EndContext();
@@ -188,7 +188,7 @@ using TangyRestaurant.Utility;
                 WriteLiteral("                            ");
                 EndContext();
                 BeginContext(1282, 192, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e9d6b7a17836488685db73f90ddd76e6", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a691f32f9d164b05aba507824ecceb70", async() => {
                     BeginContext(1413, 52, true);
                     WriteLiteral("<i class=\"fas fa-flag-checkered\"></i> Order Prepared");
                     EndContext();
@@ -234,7 +234,7 @@ using TangyRestaurant.Utility;
                 WriteLiteral("\r\n                        ");
                 EndContext();
                 BeginContext(1529, 181, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5268ec1d25be48e7bc4df64aa2a1c7e3", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("button", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a241a406a7d941ecb0c739e0c848bdc1", async() => {
                     BeginContext(1660, 41, true);
                     WriteLiteral("<i class=\"fas fa-times\"></i> Cancel Order");
                     EndContext();

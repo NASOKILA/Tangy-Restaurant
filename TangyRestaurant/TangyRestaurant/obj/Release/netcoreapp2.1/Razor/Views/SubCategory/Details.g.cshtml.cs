@@ -64,7 +64,7 @@ using TangyRestaurant.TagHelpers;
             WriteLiteral("\r\n\r\n<h2>Sub Category Details</h2>\r\n<hr />\r\n<br />\r\n\r\n<div class=\"form-border\">\r\n    <fieldset disabled>\r\n\r\n        <div class=\"form-group\">\r\n            <div class=\"row\">\r\n                <div class=\"col-sm-3\">\r\n                    ");
             EndContext();
             BeginContext(395, 58, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("label", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f1a3ffc467ad45b8ae6ba8d34e154f7c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("label", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "c8b5d78803a64536b51ae2e68dc0781f", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_LabelTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.LabelTagHelper>();
@@ -98,7 +98,7 @@ WriteAttributeValue("", 565, Model.Name, 565, 11, false);
             WriteLiteral(" class=\"form-control\" />\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n        <div class=\"form-group\">\r\n            <div class=\"row\">\r\n                <div class=\"col-sm-3\">\r\n                    ");
             EndContext();
             BeginContext(790, 67, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("label", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "87ad9831caba41d38416e527c82332df", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("label", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0f2896e0675e4a429f1d70725bacead3", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_TagHelpers_LabelTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.LabelTagHelper>();
@@ -132,7 +132,7 @@ WriteAttributeValue("", 969, Model.category.Name, 969, 20, false);
             WriteLiteral(" class=\"form-control\" />\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </fieldset>\r\n\r\n    <br />\r\n\r\n    <div class=\"form-group\">\r\n        ");
             EndContext();
             BeginContext(1147, 93, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "adb18d5a946b458f9a3af7cff68e56a8", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0e38400ad0ca411abd497ce940961f44", async() => {
                 BeginContext(1193, 43, true);
                 WriteLiteral("<i class=\"fas fa-backward\"></i> &nbsp; Back");
                 EndContext();
@@ -155,7 +155,7 @@ WriteAttributeValue("", 969, Model.category.Name, 969, 20, false);
             WriteLiteral("\r\n        ");
             EndContext();
             BeginContext(1250, 113, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e6af7df9d21f40ff915775219d558298", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ab781cf8f88b4ccf9cec608f3c4a2e90", async() => {
                 BeginContext(1320, 39, true);
                 WriteLiteral("<i class=\"fas fa-edit\"></i> &nbsp; Edit");
                 EndContext();

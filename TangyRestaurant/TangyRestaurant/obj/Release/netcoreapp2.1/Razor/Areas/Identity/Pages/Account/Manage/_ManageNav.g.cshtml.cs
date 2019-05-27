@@ -79,7 +79,7 @@ using TangyRestaurant.Areas.Identity.Pages.Account.Manage;
             WriteLiteral("\r\n<fieldset class=\"p-1 border\">\r\n    ");
             EndContext();
             BeginContext(193, 80, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "359dfeddbb1545a886647e102e2ae720", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a5ea4ab133654b72af25694480bdb8fe", async() => {
                 BeginContext(262, 7, true);
                 WriteLiteral("Profile");
                 EndContext();
@@ -102,7 +102,7 @@ using TangyRestaurant.Areas.Identity.Pages.Account.Manage;
             WriteLiteral("\r\n    <br />\r\n    <br />\r\n    ");
             EndContext();
             BeginContext(303, 111, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "02c93de9e0504ed7b644b301100aad91", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f0f305a606054e7996399faafb54423d", async() => {
                 BeginContext(402, 8, true);
                 WriteLiteral("Password");
                 EndContext();
@@ -135,7 +135,7 @@ using TangyRestaurant.Areas.Identity.Pages.Account.Manage;
             WriteLiteral("        <br />\r\n        ");
             EndContext();
             BeginContext(488, 117, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "793055311c194a08ac8730ec8f45d4b3", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "df3f6c9f12e9491ca61c02835580adf5", async() => {
                 BeginContext(586, 15, true);
                 WriteLiteral("External logins");
                 EndContext();
@@ -167,7 +167,7 @@ using TangyRestaurant.Areas.Identity.Pages.Account.Manage;
             WriteLiteral("    <br />\r\n    ");
             EndContext();
             BeginContext(646, 116, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1b4aa4ef54744851a3f4355a88733753", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "1f6a4ecb176142d39f5178d30d26c9c5", async() => {
                 BeginContext(733, 25, true);
                 WriteLiteral("Two-factor authentication");
                 EndContext();
@@ -190,7 +190,7 @@ using TangyRestaurant.Areas.Identity.Pages.Account.Manage;
             WriteLiteral("\r\n    <br />\r\n    <br />\r\n    ");
             EndContext();
             BeginContext(792, 93, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "bd0fe14187f8446da0c8567aa2fa2d64", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8cfb841f25f44a7ba1cb5622ee4facb9", async() => {
                 BeginContext(868, 13, true);
                 WriteLiteral("Personal data");
                 EndContext();

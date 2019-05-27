@@ -64,7 +64,7 @@ using TangyRestaurant.TagHelpers;
             WriteLiteral("\r\n\r\n");
             EndContext();
             BeginContext(136, 108, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "5bf0218c34d144ddaa03a5c19b4235ad", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "86de19c902f94f32b872bc304835af2f", async() => {
                 BeginContext(206, 34, true);
                 WriteLiteral("<i class=\"fas fa-info-circle\"></i>");
                 EndContext();
@@ -100,7 +100,7 @@ using TangyRestaurant.TagHelpers;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(246, 98, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "9ff986c0cdff4268aaac685396403e49", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "314efe1cf4124b189db72f13fa16b086", async() => {
                 BeginContext(313, 27, true);
                 WriteLiteral("<i class=\"fas fa-edit\"></i>");
                 EndContext();
@@ -136,7 +136,7 @@ using TangyRestaurant.TagHelpers;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(346, 104, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "99c2dbf706684afa83970be392a7c408", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e236c83b42b24e0c9f30cec9a52d6a54", async() => {
                 BeginContext(414, 32, true);
                 WriteLiteral("<i class=\"fas fa-trash-alt\"></i>");
                 EndContext();

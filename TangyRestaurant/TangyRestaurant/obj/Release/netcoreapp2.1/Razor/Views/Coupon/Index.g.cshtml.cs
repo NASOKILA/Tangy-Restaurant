@@ -167,7 +167,7 @@ Write(await Html.PartialAsync("_CreateButtonPartialView"));
             WriteLiteral("</td>\r\n                    <td>\r\n                        ");
             EndContext();
             BeginContext(947, 102, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0cacf6d5b7084e4196f140fb0fb52a83", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "e636751b5d9c4967b57df29e82feaa20", async() => {
                 BeginContext(1018, 27, true);
                 WriteLiteral("<i class=\"fas fa-edit\"></i>");
                 EndContext();
@@ -203,7 +203,7 @@ Write(await Html.PartialAsync("_CreateButtonPartialView"));
             WriteLiteral("\r\n                        ");
             EndContext();
             BeginContext(1075, 108, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "64a5ce5ea3ca4fec9bdf43d9aa96980c", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "654c3a6ed47b40998b459657fa47efef", async() => {
                 BeginContext(1147, 32, true);
                 WriteLiteral("<i class=\"fas fa-trash-alt\"></i>");
                 EndContext();

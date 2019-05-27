@@ -78,7 +78,7 @@ using TangyRestaurant.Utility;
             WriteLiteral("\r\n");
             EndContext();
             BeginContext(159, 1415, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "a888bcbfb45049bf96f9da788e932e46", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "3189cc0654eb48cbb0e059fd099a74f0", async() => {
                 BeginContext(178, 1389, true);
                 WriteLiteral(@"
     <div class=""col-sm-12"" style=""background-color: aliceblue;height:150px;"">
@@ -136,7 +136,7 @@ using TangyRestaurant.Utility;
             WriteLiteral("\r\n\r\n<br />\r\n<br />\r\n\r\n");
             EndContext();
             BeginContext(1596, 2571, false);
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "d3d2fec29e134436ac1447f300f41d31", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "14e042cf17714e42ba926c4c91457de6", async() => {
                 BeginContext(1615, 59, true);
                 WriteLiteral("\r\n\r\n    <h2 class=\"text-info\">Orders :</h2>\r\n    <hr />\r\n\r\n");
                 EndContext();
@@ -193,7 +193,7 @@ using TangyRestaurant.Utility;
                 WriteLiteral("                            ");
                 EndContext();
                 BeginContext(2351, 179, false);
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "f0a44daf497941c19cd4886f4a23e269", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "ab8cf466f4644923b60bafdc829ea114", async() => {
                     BeginContext(2478, 48, true);
                     WriteLiteral("<i class=\"far fa-thumbs-up\"></i> Pick Up Details");
                     EndContext();
